@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- darkweb.itemstype tree view -->
+    <record id="darkweb_itemlist_view_tree" model="ir.ui.view">
+        <field name="name">darkweb.itemstype.view.tree</field>
+        <field name="model">darkweb.itemstype</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="item_type"/>
+                <field name="total_items"/>
+                <field name="list"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- darkweb.itemstype form view -->
+    <record id="darkweb_itemlist" model="ir.ui.view">
+        <field name="name">darkweb.itemstype.view.form</field>
+        <field name="model">darkweb.itemstype</field>
+        <field name="arch" type="xml">
+            <form string="Item Type">
+                <sheet>
+                    <group name="item_type" string="Item Type">
+                        <field name="name"/>
+                        <field name="item_type"/>
+                        <field name="total_items"/>
+                    </group>
+
+                    <group name="weapon_id" string="Weapon IDs">
+                        <field name="weapon_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- darkweb.itemstype action window -->
+    <record id="darkweb_itemstype_action" model="ir.actions.act_window">
+        <field name="name">Items Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">darkweb.itemstype</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="darkweb_itemstype_menu"
+        name="Items Type"
+        parent="darkweb_items_menu_category"
+        action="darkweb_itemstype_action"
+        sequence="20"/>
+
+</odoo>

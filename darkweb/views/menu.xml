@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="darkweb_menu_root"
+        name="DarkWeb"
+        sequence="10"/>
+
+    <menuitem
+        id="darkweb_items_menu_category"
+        name="Weapons"
+        parent="darkweb_menu_root"
+        sequence="10"/>
+        
+    <menuitem
+        id="darkweb_staff_menu_category"
+        name="Staff"
+        parent="darkweb_menu_root"
+        sequence="10"/>
+
+</odoo>

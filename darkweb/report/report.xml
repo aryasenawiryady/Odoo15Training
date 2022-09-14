@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <!-- Report Supplier -->
+    <record id="report_supplier_xlsx" model="ir.actions.report">
+        <field name="name">Print Supplier</field>
+        <field name="model">darkweb.supplier</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">darkweb.report_supplier_xlsx</field>
+        <field name="report_file">darkweb.report_supplier_xlsx</field>
+        <field name="binding_model_id" ref="model_darkweb_supplier"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Report Transaction -->
+    <record id="report_transaction_xlsx" model="ir.actions.report">
+        <field name="name">Print Transaction</field>
+        <field name="model">darkweb.transaction</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">darkweb.report_transaction_xlsx</field>
+        <field name="report_file">darkweb.report_transaction_xlsx</field>
+        <field name="binding_model_id" ref="model_darkweb_transaction"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- PDF Transaction -->
+    <record id="report_transaction_pdf" model="ir.actions.report">
+        <field name="name">Print PDF</field>
+        <field name="model">darkweb.transaction</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">darkweb.report_transaction_pdf</field>
+        <field name="report_file">darkweb.report_transaction_pdf</field>
+        <field name="binding_model_id" ref="model_darkweb_transaction"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- darkweb.supplier tree view -->
+    <record id="darkweb_supplier_view_tree" model="ir.ui.view">
+        <field name="name">darkweb.supplier.view.tree</field>
+        <field name="model">darkweb.supplier</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="address"/>
+                <field name="phone"/>
+                <field name="weapon_id" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- darkweb.supplier form view -->
+    <record id="model_name_view_form" model="ir.ui.view">
+        <field name="name">darkweb.supplier.view.form</field>
+        <field name="model">darkweb.supplier</field>
+        <field name="arch" type="xml">
+            <form string="Supplier">
+                <sheet>
+                    <group name="inti" string="Inti">
+                        <group>
+                            <field name="name"/>
+                            <field name="address"/>
+                            <field name="phone" required = "True"/>                        
+                        </group>
+                        <group name="image" string="image">
+                                    <field name="image" widget= "image"/>
+                        </group>
+                    </group>
+                    <group name="weapon" string="Weapon">
+                                <field name="weapon_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- darkweb.supplier kanban view -->
+    <record id="darkweb_supplier_view_kanban" model="ir.ui.view">
+        <field name="name">darkweb.supplier.view.kanban</field>
+        <field name="model">darkweb.supplier</field>
+        <field name="arch" type="xml">
+            <kanban string="Selfie">
+                <field name="name" />
+                <field name="address"/>
+                <field name="phone" />
+
+                <field name="id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img alt="Image" t-att-src="kanban_image('darkweb.supplier', 'image', record.id.raw_value)"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                            <strong><field name="name"/></strong>
+                                    </li>
+                                    <li class="mb4">
+                                            Address: 
+                                            <field name="address"/>
+                                    </li>
+                                    <li class="mb4">
+                                            Phone: 
+                                            <field name="phone"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- darkweb.supplier action window -->
+    <record id="darkweb_supplier_action" model="ir.actions.act_window">
+        <field name="name">Supplier List</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">darkweb.supplier</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="darkweb_supplier_menu_act" 
+            name="Supplier" 
+            parent="darkweb_menu_root" 
+            action="darkweb_supplier_action" 
+            sequence="40"/>
+</odoo>

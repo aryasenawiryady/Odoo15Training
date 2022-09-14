@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- darkweb.cashier tree view -->
+    <record id="darkweb_cashier_view_tree_inherit" model="ir.ui.view">
+        <field name="name">Cashier List</field>
+        <field name="model">darkweb.cashier</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="darkweb_staff_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="cashier_id" />
+            </xpath>          
+        </field>
+    </record>
+
+    <!-- darkweb.cashier form view -->
+    <record id="darkweb_cashier_view_form_inherit" model="ir.ui.view">
+        <field name="name">Cashier Form</field>
+        <field name="model">darkweb.cashier</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="darkweb_staff_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet//group[2]" position="after">
+                <group name="id" string="ID">
+                    <field name="cashier_id" />
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='address']" position="attributes">
+               <attribute name="string">Address</attribute>
+            </xpath>          
+        </field> 
+    </record>
+
+    <!-- darkweb.cashier action window -->
+    <record id="darkweb_cashier_action" model="ir.actions.act_window">
+        <field name="name">Cashier List</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">darkweb.cashier</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem 
+        id="darkweb_cashier_menu_act"
+        name="Cashier"
+        parent="darkweb_staff_menu_category"
+        action="darkweb_cashier_action"
+        sequence="10"/>
+</odoo>

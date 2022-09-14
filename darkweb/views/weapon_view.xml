@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    
+    <!-- darkweb.weapon tree view -->
+    <record id="darkweb_weapon_view_tree" model="ir.ui.view">
+        <field name="name">Weapon List</field>
+        <field name="model">darkweb.weapon</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="purchase_price" />
+                <field name="selling_price" />
+                <field name="stock"/>
+                <field name="items_type_id" />
+                <field name="supplier_id" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- darkweb.weapon form view -->
+    <record id="darkweb_weapon_view_form" model="ir.ui.view">
+        <field name="name">Weapon Form</field>
+        <field name="model">darkweb.weapon</field>
+        <field name="arch" type="xml">
+            <form string="Weapon">
+                <sheet>
+                    <group name="Inti" string="inti">
+                        <group name="Weapon" string="Weapon">
+                            <field name="name" />
+                            <field name="purchase_price" />
+                            <field name="selling_price" />
+                            <field name="stock"/>
+                        </group>
+                        <group name="image" string="image">
+                                <field name="image" widget= "image"/>
+                        </group>
+                    </group>
+                    <group name="Items Type" string="Items Type">
+                        <field name="items_type_id" />
+                    </group>
+
+                    <group name="supplier" string="Supplier">
+                        <field name="supplier_id">
+                            <tree>
+                                <field name="name"/>
+                                <field name="address"/>
+                                <field name="phone"/>
+                                <field name="weapon_id" widget="many2many_tags"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- darkweb.weapon kanban view -->
+    <record id="darkweb_weapon_view_kanban" model="ir.ui.view">
+        <field name="name">darkweb.weapon.view.kanban</field>
+        <field name="model">darkweb.weapon</field>
+        <field name="arch" type="xml">
+            <kanban string="Selfie">
+                <field name="name" />
+                <field name="image"/>
+                <field name="purchase_price" />
+                <field name="selling_price" />
+                <field name="stock"/>
+                <field name="items_type_id" />
+
+                <field name="id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img alt="Image" t-att-src="kanban_image('darkweb.weapon', 'image', record.id.raw_value)"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                            <strong><field name="name"/></strong>
+                                    </li>
+                                    <li class="mb4">
+                                            purchase: 
+                                            <field name="purchase_price"/>
+                                    </li>
+                                    <li class="mb4">
+                                            selling: 
+                                            <field name="selling_price"/>
+                                    </li>
+                                    <li class="mb4">
+                                            stock: 
+                                            <field name="stock"/>
+                                    </li>
+                                    <li class="mb4">
+                                            type: 
+                                            <field name="items_type_id"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- darkweb.weapon action window -->
+    <record id="darkweb_weapon_action" model="ir.actions.act_window">
+        <field name="name">Weapon List</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">darkweb.weapon</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem
+        id="darkweb_items_menu_act"
+        name="Weapons List"
+        parent="darkweb_items_menu_category"
+        action="darkweb_weapon_action"
+        sequence="20"/>
+
+</odoo>

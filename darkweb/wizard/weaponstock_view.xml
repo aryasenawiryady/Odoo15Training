@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- darkweb.weaponstock form view -->
+    <record id="weapon_stock_view_form_wizzard" model="ir.ui.view">
+        <field name="name">weapon stock</field>
+        <field name="model">darkweb.weaponstock</field>
+        <field name="arch" type="xml">
+            <form string="Form Weapon Stock">
+                <group>
+                    <field name="weapon_id" />
+                    <field name="total" />
+                </group>
+
+                <footer>
+                    <button name='button_weapon_stock'
+                            type='object'
+                            string='Save'
+                            class='btn btn-primary' />
+                    <button string='Cancel'
+                            special='cancel'
+                            class='btn btn-secondary' />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- darkweb.weapon action window -->
+    <record id="weapon_stock_action_wizzard" model="ir.actions.act_window">
+        <field name="name">Weapon Stock</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">darkweb.weaponstock</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref='weapon_stock_view_form_wizzard' />
+        <field name="target">new</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem 
+        id="weapon_stock_menu_action_wizzard"
+        name="Wizard Weapon Stock"
+        parent="darkweb_menu_root"
+        action="weapon_stock_action_wizzard"
+        sequence="68"/>
+
+</odoo>

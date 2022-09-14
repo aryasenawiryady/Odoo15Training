@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- darkweb.cleaningservice tree view -->
+    <record id="darkweb_cleaningservice_view_tree_inherit" model="ir.ui.view">
+        <field name="name">Cleaning Service List</field>
+        <field name="model">darkweb.cleaningservice</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="darkweb_staff_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="cleaningservice_id" />
+            </xpath>          
+        </field>
+    </record>
+
+    <!-- darkweb.cleaningservice form view -->
+    <record id="darkweb_cleaningservice_view_form_inherit" model="ir.ui.view">
+        <field name="name">Cleaning Service Form</field>
+        <field name="model">darkweb.cleaningservice</field>
+        <field name="mode">primary</field>
+        <field name="inherit_id" ref="darkweb_staff_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form//sheet//group[2]" position="after">
+                <group name="id" string="ID">
+                    <field name="cleaningservice_id" />
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='address']" position="attributes">
+               <attribute name="string">Address</attribute>
+            </xpath>          
+        </field> 
+    </record>
+
+    <!-- darkweb.cleaningservice action window -->
+    <record id="darkweb_cleaningservice_action" model="ir.actions.act_window">
+        <field name="name">Cleaning Service List</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">darkweb.cleaningservice</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem 
+        id="darkweb_cleaningservice_menu_act"
+        name="Cleaning Service"
+        parent="darkweb_staff_menu_category"
+        action="darkweb_cleaningservice_action"
+        sequence="10"/>
+</odoo>

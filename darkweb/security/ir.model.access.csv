@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_darkweb_itemstype,darkweb_itemstype,model_darkweb_itemstype,base.group_user,1,1,1,1
+access_darkweb_weapon,darkweb_weapon,model_darkweb_weapon,base.group_user,1,1,1,1
+access_darkweb_staff,darkweb_staff,model_darkweb_staff,base.group_user,1,1,1,1
+access_darkweb_cashier,darkweb_cashier,model_darkweb_cashier,base.group_user,1,1,1,1
+access_darkweb_cleaningservice,darkweb_cleaningservice,model_darkweb_cleaningservice,base.group_user,1,1,1,1
+access_darkweb_security,darkweb_security,model_darkweb_security,base.group_user,1,1,1,1
+access_darkweb_supplier,darkweb_supplier,model_darkweb_supplier,base.group_user,1,1,1,1
+access_darkweb_transaction,darkweb_transaction,model_darkweb_transaction,base.group_user,1,1,1,1
+access_darkweb_transactiondetails,darkweb_transactiondetails,model_darkweb_transactiondetails,base.group_user,1,1,1,1
+access_darkweb_weaponstock,darkweb_weaponstock,model_darkweb_weaponstock,base.group_user,1,1,1,1
